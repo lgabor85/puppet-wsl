@@ -20,7 +20,7 @@ EOF
 
 # Make the script executable and run it
 sudo chmod +x /etc/wsl-static-ip.sh
-sudo ./etc/wsl-static-ip.sh
+sudo /etc/wsl-static-ip.sh
 
 # Add the script to the system profile to run on startup
 echo "sudo /etc/wsl-static-ip.sh" | sudo tee -a /etc/profile
