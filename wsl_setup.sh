@@ -56,7 +56,7 @@ cat <<EOL > /etc/hosts
 # generateHosts = false
 127.0.0.1       localhost
 127.0.1.1       WS-8VT8PG3.     WS-8VT8PG3
-$ETH_IP puppetserver.home	puppetserver
+$ETH_IP  $HOST_NAME.home  $HOST_NAME
 
 10.0.12.181     host.docker.internal
 10.0.12.181     gateway.docker.internal
