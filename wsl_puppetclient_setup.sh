@@ -53,7 +53,7 @@ EOL
 ./puppetnode_network.sh
 
 # Add the new hostname to /etc/hosts with IP of eth0 in the format: IP HOSTNAME.home HOSTNAME
-ETH1_IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+ETH1_IP=$(ip -4 addr show eth1 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 
 cat <<EOL > /etc/hosts
 # [network]
