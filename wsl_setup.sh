@@ -50,7 +50,26 @@ EOL
 
 # Add the new hostname to /etc/hosts with IP of eth0 in the format: IP HOSTNAME.home HOSTNAME
 ETH0_IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
-echo "$ETH0_IP $HOST_NAME.home $HOST_NAME" | tee -a /etc/hosts
+
+cat <<EOL > /etc/hosts
+# [network]
+# generateHosts = false
+127.0.0.1       localhost
+127.0.1.1       WS-8VT8PG3.     WS-8VT8PG3
+$ETH_IP puppetserver.home	puppetserver
+
+10.0.12.181     host.docker.internal
+10.0.12.181     gateway.docker.internal
+127.0.0.1       kubernetes.docker.internal
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+EOL
+
 if [ $? -ne 0 ]; then
   echo "Failed to add $HOST_NAME to /etc/hosts" >&2
   exit 1
