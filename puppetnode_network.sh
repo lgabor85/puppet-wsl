@@ -5,11 +5,11 @@ sudo tee /etc/wsl-static-ip.sh <<'EOF'
 #!/bin/bash
 
 # Define the interface name and static IP
-IFACE="eth0:1"
+IFACE="eth1"
 CURRENT_IP=$(hostname -I | awk '{print $1}')
 IFS='.' read -r i1 i2 i3 i4 <<< "$CURRENT_IP"
 NEW_IP="$i1.$i2.$i3.$((i4 + 1))"
-SUBNET_MASK="24"
+SUBNET_MASK="20"
 
 # Create a dummy interface and assign the new IP
 /sbin/ip link add $IFACE type dummy 2>/dev/null || true
