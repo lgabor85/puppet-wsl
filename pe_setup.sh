@@ -18,3 +18,9 @@ sudo puppet infrastructure console_password --password=$PASSWORD
 # trigger puppet agent 2 times to ensure the node is fully configured
 sudo puppet agent -t 
 sudo puppet agent -t
+
+# install pdk
+wget https://apt.puppet.com/puppet-tools-release-jammy.deb
+sudo dpkg -i puppet-tools-release-jammy.deb
+sudo apt update && sudo apt upgrade
+sudo apt install pdk
