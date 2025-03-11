@@ -24,3 +24,18 @@ wget https://apt.puppet.com/puppet-tools-release-jammy.deb
 sudo dpkg -i puppet-tools-release-jammy.deb
 sudo apt update && sudo apt upgrade
 sudo apt install pdk
+
+# set up certificate autosigning
+sudo cp autosign.rb /etc/puppetlabs/puppet/
+sudo chmod 700 /etc/puppetlabs/puppet/autosign.rb
+sudo chown pe-puppet:pe-puppet /etc/puppetlabs/puppet/autosign.rb
+
+sudo echo "PASSWORD_FOR_AUTOSIGNER_SCRIPT" > /etc/puppetlabs/puppet/psk
+sudo chmod 600 /etc/puppetlabs/puppet/psk
+sudo chown pe-puppet:pe-puppet /etc/puppetlabs/puppet/psk
+
+sudo puppet config set autosign /etc/puppetlabs/puppet/autosign.rb --section server
+
+# configure Code Manager
+
+
