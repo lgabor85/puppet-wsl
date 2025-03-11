@@ -30,7 +30,7 @@ sudo cp autosign.rb /etc/puppetlabs/puppet/
 sudo chmod 700 /etc/puppetlabs/puppet/autosign.rb
 sudo chown pe-puppet:pe-puppet /etc/puppetlabs/puppet/autosign.rb
 
-sudo echo "PASSWORD_FOR_AUTOSIGNER_SCRIPT" > /etc/puppetlabs/puppet/psk
+echo "PASSWORD_FOR_AUTOSIGNER_SCRIPT" | sudo tee /etc/puppetlabs/puppet/psk > /dev/null
 sudo chmod 600 /etc/puppetlabs/puppet/psk
 sudo chown pe-puppet:pe-puppet /etc/puppetlabs/puppet/psk
 
