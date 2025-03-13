@@ -86,6 +86,12 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+# Use sed to edit the sshd_config file and uncomment the following lines
+SSHD_CONFIG="/etc/ssh/sshd_config"
+sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/g' "$SSHD_CONFIG"
+sed -i 's/#ListenAddress/ListenAddress/g' "$SSHD_CONFIG"
+sed -i 's/#Port 22/Port 2222/g' "$SSHD_CONFIG"
+
 # Enable and start the OpenSSH server
 systemctl enable ssh && systemctl start ssh
 if [ $? -ne 0 ]; then
@@ -95,11 +101,6 @@ fi
 
 # Check the status of the OpenSSH server
 systemctl status ssh
-
-# Use sed to edit the sshd_config file and uncomment the following lines
-SSHD_CONFIG="/etc/ssh/sshd_config"
-sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/g' "$SSHD_CONFIG"
-sed -i 's/#ListenAddress/ListenAddress/g' "$SSHD_CONFIG"
 
 # Restart the OpenSSH server
 systemctl restart ssh
