@@ -28,11 +28,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Add the new user to the sudoers file
-echo "$USER_NAME ALL=(ALL) NOPASSWD: ALL" | tee /etc/sudoers.d/"$USER_NAME"
-if [ $? -ne 0 ]; then
-  echo "Failed to add $USER_NAME to sudoers" >&2
-  exit 1
-fi
+sudo usermod -a -G sudo $USER_NAME
 
 # Add the following to wsl.conf
 WSL_CONF="/etc/wsl.conf"
