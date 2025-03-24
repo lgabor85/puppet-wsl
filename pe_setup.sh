@@ -20,8 +20,8 @@ sudo puppet agent -t
 sudo puppet agent -t
 
 # install pdk
-wget https://apt.puppet.com/puppet-tools-release-jammy.deb
-sudo dpkg -i puppet-tools-release-jammy.deb
+wget -O ~/puppet-tools-release-jammy.deb https://apt.puppet.com/puppet-tools-release-jammy.deb
+sudo dpkg -i ~/puppet-tools-release-jammy.deb
 sudo apt update && sudo apt upgrade
 sudo apt install pdk
 
