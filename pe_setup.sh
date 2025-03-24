@@ -4,7 +4,8 @@
 sudo locale-gen en_US.UTF-8 && sudo update-locale LANG=en_US.UTF-8
 
 # download and unpack the Puppet Enterprise tarball
-curl -JLO 'https://pm.puppet.com/cgi-bin/download.cgi?dist=ubuntu&rel=22.04&arch=amd64&ver=latest' && tar -xf tar -xf puppet-enterprise-2025.1.0-ubuntu-22.04-amd64.tar.gz
+curl -JLO 'https://pm.puppet.com/cgi-bin/download.cgi?dist=ubuntu&rel=22.04&arch=amd64&ver=latest' 
+tar -xf tar -xf puppet-enterprise-2025.1.0-ubuntu-22.04-amd64.tar.gz
 
 # install Puppet Enterprise
 sudo ./puppet-enterprise-2025.1.0-ubuntu-22.04-amd64/puppet-enterprise-installer
