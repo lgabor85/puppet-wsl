@@ -36,6 +36,17 @@ sudo chown pe-puppet:pe-puppet /etc/puppetlabs/puppet/psk
 
 sudo puppet config set autosign /etc/puppetlabs/puppet/autosign.rb --section server
 
-# configure Code Manager
+# enable code manager
+export PE_CONFIG=/etc/puppetlabs/enterprise/conf.d/pe.conf
+sudo sed -i 's/^[[:space:]]*#\("[^"]*code_manager_auto_configure": true\)/  \1/' "$PE_CONFIG"
+
+# set the control repo URL. 
+# replace <https://user:token@my control repo.git> with the actual URL of your control repo.
+sudo sed -i 's|^[[:space:]]*#\("[^"]*r10k_remote": \).*|\1"<https://user:token@my control repo.git>",|' "$PE_CONFIG"
+
+# run puppet agent to apply the changes
+sudo puppet agent -t
+sudo puppet agent -t
+sudo puppet agetn -t
 
 
